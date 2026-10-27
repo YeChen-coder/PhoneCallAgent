@@ -1,5 +1,7 @@
 # Clinic Phone Agent — 小诊所 AI 电话前台（骨架）
 
+这个不是真实在用的，这是一个类似于 pre-interview assignment 的东西
+
 [English](README.md) | **中文**
 
 接电话 → 回答诊所常见问题 → 预约 / 改约 / 取消 → 处理不了的留言或转真人 → 通话结束后写摘要给前台。
