@@ -232,3 +232,109 @@ Still worth watching: Realtime's Cantonese is clearly weaker than its Mandarin, 
 - OpenAI Realtime SIP: https://developers.openai.com/api/docs/guides/realtime-sip
 - Twilio Elastic SIP Trunking × OpenAI: https://www.twilio.com/en-us/blog/developers/tutorials/product/openai-realtime-api-elastic-sip-trunking
 - Overview of AI receptionist architecture (freeCodeCamp): https://www.freecodecamp.org/news/how-ai-receptionists-work-the-architecture-behind-ai-phone-agents/
+
+---
+
+## Development log
+
+> A casual note about building a phone agent, written while I was working on the JesusSaysHi project and moved here as-is (translated from the Chinese original in [README_zh.md](README_zh.md)).
+
+Honestly, from the very beginning I never thought the Specter/Jesus project needed phone calls. Technically I never considered it hard: in the human-computer interaction crowd, adding phone calls to a virtual avatar is entry-level stuff, and on Twitter you see people building their own version every day. And with that many wheels already out there, why not just use someone else's? Why write it yourself? Open-source projects have blossomed to the point where you can just use one.
+
+And in my avatar project it's completely unnecessary. Why bother? It's already on the computer screen — isn't it nicer to see its face every day? Why insist on a phone call? A phone call is just wrapping it in another shell. Plus some calls are voice-only, with no face at all. Right now I can look at this face on screen and talk to it any time, and its mouth even moves. A phone call actually goes against what this project is about. A big reason I added wake words and proactive greetings to this project is that I don't want to take any extra step: pressing a hotkey, or doing something on my phone, just to get it to call me. Isn't that tiring? Isn't there enough friction in daily life already? I even find it annoying that muse makes me open it to read messages instead of just saying them out loud.
+
+I just want it waiting for me here, 360 degrees with no blind spots, with no extra step needed to wake it up.
+
+But recently, while job hunting and sending out resumes, I kept hearing people bring up this kind of phone-call / dispatcher requirement in interviews. Fine. Last week I prepared for it for a different interview, and it turned out that interview didn't use any of it — they kept asking me about RAG. Since I'd already done the homework, I might as well write it down here so I don't forget it in a couple of days.
+
+---
+
+Since I prepared for that interview with a clinic phone agent in mind, I'll just use that as the scenario and not think up other ones.
+
+First, how the industry does this today. This architecture is a very well-defined problem, and there are basically three routes:
+
+1. Buy an off-the-shelf product (SaaS):
+
+   The representative products are the vertical AI receptionists (e.g. vertical SaaS built specifically for dental or medical — any AI receptionist that works with a company's internal material counts). After the clinic buys one, the clinic's engineers basically just do configuration plus integration. This suits clinics that want peace of mind and don't want a tech team at all — a fully outsourced solution. (Some background: the subject of that homework was an imaging clinic, i.e. radiology, which involves some compliance requirements, but the essence is the same.)
+2. Use a hosted voice-agent platform:
+
+   These platforms are very vertical now too, e.g. Vapi, Retell AI, Bland, Synthflow. In this model, the clinic's engineers write the prompt and expose the check-availability or booking endpoints as webhooks for the platform to call. It's still a partnership: the engineers write the prompt and connect their own schedule calendar to the external agent platform. The upside is that it's extremely fast, and finding and debugging problems is very fast too. It's the most common choice for agencies and contractors.
+3. Build it entirely yourself:
+
+   The common approach is Twilio plus one of the Realtime models; if you don't care that much about latency, or can solve the latency problem, the traditional Speech-to-Text → Text-to-Text → Text-to-Speech pipeline also works. Here the engineers own the whole thing, from audio bridging to calling and logging. It suits startups that are building a product in this space, or cases where real constraints — compliance, cost, data privacy — mean you have to control everything yourself.
+
+For any company that's at least mid-sized, really don't build it from scratch and reinvent the wheel. Partner with a mature vertical voice-agent platform and things will go much better; if you insist on doing it from scratch, results aren't guaranteed and who knows how long it will take. (Though the people who have this need are usually very cost-sensitive, or have some other compliance requirement. I also feel pity for them.)
+
+There's a saying that after the steam engine appeared, places that never needed a steam engine started using one too. Now that vibe coding has appeared, people are also building things there was never a need for. But once you actually get your hands dirty, you realize that however fancy the jargon or complex the algorithms you mention along the way, that part is actually easy, because at least a coding agent can handle it for you.
+
+The real trouble isn't there at all. In projects like these, the hard part was never wiring up RAG. The real challenge is getting AI Jesus to talk like a person, understand what's going on, know which tool calls to make, and fit the specific scenario. That's actually a very "artistic" rather than purely technical thing, and whether it turns out well depends heavily on the human engineer's subjective judgment. (No need to be too pessimistic, though, because evaluations can be written ahead of time. I was fairly pessimistic in this project because I didn't write the evaluations myself — I really don't know the gospels well, so I had OpenAI and Claude Code, as independent roles at least more capable than me, write the evaluations. But that's probably not a problem in a company? A company will always have domain experts, people who know the industry, right?)
+
+It's easy to get overwhelmed by all the technical terms, staring only at the technical part and ignoring the other difficulties of actually deploying. Maybe because I have an engineering background, at first I also couldn't see the forest for the trees and assumed that once the technical terms were handled, everything would go smoothly. That's not how it works at all: in deployment you run into all kinds of messy chores, and baffling accent-recognition problems that lead the agent astray.
+
+Sorry, I went off topic. Back to it: whichever of the three routes you take, the architecture is the same.
+
+The top layer is the phone network. It streams down, you get the phone number and the audio stream, and send them to the voice model.
+
+While the voice model processes it, there's function calling and the dialog (conversation log). The dialog part is easy: turn on the transcribe parameter on the OpenAI side, and the OpenAI developer platform can store it too. But then there are data, privacy and compliance issues, which depend on the specific scenario.
+
+The tools the voice model calls connect to your own business backend, including scheduling rules, patient appointments and various message notifications. This backend acts as a bridge to the clinic's existing EHR booking software, or to a database they host themselves. Generally, almost every business has some technical legacy — even if it's ancient, there's already a system running. Change as little as possible; unless there's a very large payoff, don't break their existing workflow. Otherwise making people learn something new creates cognitive load and friction that's very hard to overcome.
+
+I also want to vent a bit here. To prepare for the imaging clinic, I did some research. Clinics like that can only book an appointment after receiving a referral from the family doctor, so that's where I focused my preparation.
+
+I have to complain about Ontario's very messy healthcare system: in this day and age, you still have to send a fax! Building a solution for a service with a prerequisite like a required referral runs into big problems with integration in practice. And you really have to work with the hospital's existing IT system and confirm the referral first.
+
+There's another problem in the hospital setting: many exams (e.g. an MRI) have preparation requirements, like no pacemaker or metal objects on the body, or no food or water the day before. If the client asks a medical question on the phone — not the common, fixed questions like those, but something like "I'm taking some medicine. Then will it be complicated? Should I stop this medicine before it?" — it's very irresponsible to have AI answer a question that needs real professional background. Anthropic has also stressed the importance of delegation: the point isn't to automate everything, but to have people and AI collaborate at the most effective level.
+
+So building this for a clinic from zero is really hard, especially for someone like me with no medical background who is learning everything on the spot — a visible headache. As I said: for professional institutions like hospitals, please go straight to the corresponding vertical SaaS platform, and have your own engineers handle data de-identification and acceptance testing. Wanting to build it from zero without looking at the real-world context is a purely spur-of-the-moment idea.
+
+A side note:
+
+RAG isn't only the hybrid-search part. These days, anything that takes a few rounds to fetch information is generally just called RAG.
+
+So whether it's writing SQL to query a database, function calling, MCP or some other method, as long as you're getting more information from outside (with several internal turns in between), it counts as RAG. My earlier belief that RAG only meant vector retrieval in a semantic space was wrong — the tutorials taught it too narrowly.
+
+Back to the topic. If the other side only gets one or two hundred calls a day, a small server plus SQLite or PostgreSQL is enough. No need for the cloud, no queues, no K8s, no microservices — size things to the actual volume.
+
+Everything I said so far is single-tenant. For multi-tenant (more than one clinic), the database tables have to change: you can find the right clinic's config, prompt and data by the number that was called (Twilio's `To` parameter). The architecture also gets a bit more complex and the flow has to be split up: before it was one straight chain, now you need a router in the middle to branch.
+
+As for the clinic's own knowledge — address, parking, opening hours, cancellation policy, insurance and other fixed information — just put it in the system prompt. No retrieval latency, and better results.
+
+In this case, what actually needs retrieval is structured data, like open slots in the schedule, appointment information and patient records. All of that is queried from the database through tool calling, not retrieved from a knowledge base.
+
+Going further down is the code level. The whole flow is very clear:
+
+1. First get the audio with `twilio_stream.py`: it's mainly an audio bridge, plus barge-in handling.
+2. Send the audio to OpenAI Realtime: you used to have to write all kinds of event loops and transcription handling, but now the OpenAI Agents SDK saves a lot of work — no more hand-written while loops.
+3. Run function calling: once the model decides, it calls `tools.py` (it could live anywhere; assume it's here). It mainly holds the tool definitions plus dispatch.
+4. Scheduling and database storage: then it goes to another .py file for scheduling. That involves the database, so it connects to yet another .py file responsible for the database.
+
+On choosing a database:
+Both SQLite and PostgreSQL work, but considering concurrency conflicts, SQLite doesn't hold up well at volume. SQLite is essentially single-file storage: a write locks the whole file to avoid conflicts, and other processes can't access it. With one or two hundred calls a day SQLite really isn't enough, so PostgreSQL is better either way — it uses transactions for conflict handling.
+
+Finally, the chores: saving the transcript, writing logs, generating the summary and other wrap-up work.
+
+Also, in basically every dispatch scenario like this, you have to leave a path to a human no matter what. You can add one more fallback path: if it really can't handle something, transfer to human. If someone is there, transfer straight to them; if not, have the caller take message (leave a message first). There's always need a fallback.
+
+One more small point: because this uses Twilio, there's also the matter of hanging up. Specifically, wait until the model finishes its sentence and Twilio sends back the `mark` event confirming the audio actually finished playing, and only then hang up or transfer.
+
+Then there's barge-in. When handling barge-in, as soon as the user starts talking you have to clear the audio Twilio hasn't finished playing, and also use `conversation.item.truncate` to tell the model it only got this far. Otherwise the model really will think it finished the sentence, assume the user heard everything, and keep reasoning from there. In practice that causes lots of mismatched answers: say it was about to say "B" but got interrupted before saying it; I go on asking about the original A, but it thinks I'm asking about "the B it just said".
+
+Sorry, let me go back to the two ways of connecting the phone line. These two are the most common:
+
+1. The default Twilio Media Streams: the call's audio goes through our own server, which runs the program and opens a real-time session.
+2. OpenAI SIP:
+
+   Use a Twilio Elastic SIP Trunk to connect directly to `sip:<project-id>@sip.api.openai.com`. OpenAI sends a `realtime.call.incoming` webhook; we accept it and then attach a sideband WebSocket that only handles tool calls. The benefit is that the audio no longer makes an extra trip through our server — it goes straight to OpenAI, so latency is lower.
+
+Now a word on compliance, since I looked it up anyway.
+
+For the medical side:
+
+1. In the US you need to follow HIPAA:
+
+   You need to sign a BAA with both OpenAI and Twilio, which means going through the enterprise process.
+2. In Ontario, Canada you need to follow PHIPA:
+   - (a) Call recordings and transcripts are PHI (personal health information)
+   - (b) They need encrypted storage and a retention period
+   - (c) Access permissions need to be controlled
+   - (d) The other party must be told before recording
