@@ -1,0 +1,34 @@
+[
+ {
+  "scenario": "faq_refill",
+  "outcome": "message_taken",
+  "tools": [
+   "take_message",
+   "end_call"
+  ],
+  "gaps": [
+   2.88,
+   1.23,
+   2.14,
+   1.83,
+   2.03
+  ]
+ },
+ {
+  "scenario": "chinese",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   2.69,
+   1.39,
+   1.19,
+   2.45,
+   2.06
+  ]
+ }
+]

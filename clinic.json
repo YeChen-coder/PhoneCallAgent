@@ -1,0 +1,49 @@
+{
+  "name": "Maple Family Clinic",
+  "name_zh": "枫叶家庭诊所",
+  "timezone": "America/Toronto",
+  "phone_transfer_number": "+15550002222",
+  "front_desk_languages": ["English", "Mandarin"],
+  "slot_minutes": 15,
+  "min_booking_lead_minutes": 60,
+  "max_booking_days_ahead": 60,
+  "hours": {
+    "mon": [["09:00", "12:00"], ["13:00", "17:00"]],
+    "tue": [["09:00", "12:00"], ["13:00", "17:00"]],
+    "wed": [["09:00", "12:00"], ["13:00", "19:00"]],
+    "thu": [["09:00", "12:00"], ["13:00", "17:00"]],
+    "fri": [["09:00", "13:00"]],
+    "sat": [],
+    "sun": []
+  },
+  "closed_dates": ["2026-12-25", "2026-12-26", "2027-01-01"],
+  "services": [
+    {"key": "checkup", "name": "General check-up", "minutes": 30},
+    {"key": "followup", "name": "Follow-up visit", "minutes": 15},
+    {"key": "physical", "name": "Annual physical", "minutes": 45},
+    {"key": "vaccine", "name": "Vaccination", "minutes": 15}
+  ],
+  "providers": [
+    {
+      "name": "Dr. Wei Shen",
+      "name_zh": "沈伟医生",
+      "aliases": ["沈医生", "沈伟", "沈大夫", "Shen"],
+      "languages": ["English", "Mandarin", "Cantonese"],
+      "services": ["checkup", "followup", "physical"]
+    },
+    {
+      "name": "Dr. Michael Patel",
+      "aliases": ["Patel"],
+      "languages": ["English"],
+      "services": ["checkup", "followup", "physical", "vaccine"],
+      "accepting_new_patients": false
+    },
+    {
+      "name": "Nurse Emily Wong",
+      "name_zh": "黄护士",
+      "aliases": ["Emily", "黄护士", "Wong"],
+      "languages": ["English", "Cantonese"],
+      "services": ["vaccine", "followup"]
+    }
+  ]
+}

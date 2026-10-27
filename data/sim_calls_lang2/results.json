@@ -1,0 +1,39 @@
+[
+ {
+  "scenario": "mixed_reschedule",
+  "outcome": "rescheduled",
+  "tools": [
+   "verify_patient",
+   "list_my_appointments",
+   "find_available_slots",
+   "reschedule_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   2.7,
+   1.62,
+   1.3,
+   1.19,
+   1.19,
+   2.12
+  ]
+ },
+ {
+  "scenario": "cantonese",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   1.84,
+   1.92,
+   2.3,
+   1.26,
+   2.36,
+   1.86
+  ]
+ }
+]

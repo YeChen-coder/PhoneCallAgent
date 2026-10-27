@@ -1,0 +1,85 @@
+[
+ {
+  "scenario": "reschedule",
+  "outcome": "rescheduled",
+  "tools": [
+   "verify_patient",
+   "list_my_appointments",
+   "find_available_slots",
+   "reschedule_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   1.28,
+   4.83,
+   1.53,
+   1.84
+  ]
+ },
+ {
+  "scenario": "new_patient",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   5.28,
+   1.89,
+   4.8
+  ]
+ },
+ {
+  "scenario": "faq_refill",
+  "outcome": "message_taken",
+  "tools": [
+   "take_message",
+   "end_call"
+  ],
+  "gaps": [
+   5.67,
+   1.47
+  ]
+ },
+ {
+  "scenario": "emergency",
+  "outcome": "completed",
+  "tools": [
+   "end_call"
+  ],
+  "gaps": [
+   1.27,
+   4.77
+  ]
+ },
+ {
+  "scenario": "human",
+  "outcome": "transferred",
+  "tools": [
+   "take_message",
+   "transfer_to_human"
+  ],
+  "gaps": [
+   8.53,
+   2.75,
+   6.25
+  ]
+ },
+ {
+  "scenario": "chinese",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   1.89,
+   0.81,
+   1.09
+  ]
+ }
+]

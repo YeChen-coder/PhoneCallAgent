@@ -1,0 +1,81 @@
+2026-10-17 23:23:08,821 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:23:13,567 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:23:14,004 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:23:33,688 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.00s ->first_audio=0.72s
+2026-10-17 23:23:36,065 INFO app.tools: tool register_patient({"first_name": "Kevin", "last_name": "Brown", "date_of_birth": "1979-03-03"}) -> {"ok": false, "error": "A patient with that name and birth date already exists."}
+2026-10-17 23:23:38,010 INFO app.tools: tool verify_patient({"first_name": "Kevin", "last_name": "Brown", "date_of_birth": "1979-03-03"}) -> {"ok": true, "patient": "Kevin Brown"}
+2026-10-17 23:23:39,828 INFO app.tools: tool find_available_slots({"service": "physical", "date_from": "2026-10-19", "date_to": "2026-10-30", "part_of_day": "morning"}) -> {"ok": true, "slots": [{"slot_id": "1@2026-10-19T09:00:00-04:00", "when": "Monday, October 19 at 9 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T09:45:00-04:00", "when": "Monday, October 19 at 9:45 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T10:30:00-04:00", "when":
+2026-10-17 23:23:59,913 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:24:04,742 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:05,155 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:24:10,712 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.00s ->first_audio=0.80s
+2026-10-17 23:24:11,268 INFO app.tools: tool book_appointment({"slot_id": "1@2026-10-19T09:00:00-04:00", "service": "physical"}) -> {"ok": false, "error": "Sorry, that time was just taken. Let me find other options."}
+2026-10-17 23:24:13,411 INFO app.tools: tool find_available_slots({"service": "physical", "date_from": "2026-10-19", "date_to": "2026-10-30", "part_of_day": "morning", "provider_name": "Dr. Sarah Chen"}) -> {"ok": true, "slots": [{"slot_id": "1@2026-10-19T09:45:00-04:00", "when": "Monday, October 19 at 9:45 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T10:15:00-04:00", "when": "Monday, October 19 at 10:15 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T10:45:00-04:00", "wh
+2026-10-17 23:24:31,604 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:24:35,677 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:36,169 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:24:44,102 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.02s ->first_audio=0.73s
+2026-10-17 23:24:45,079 INFO app.notifications: SMS skipped (disabled or no number): Maple Family Clinic: your Annual physical with Dr. Sarah Chen is booked for Monday, October 19 at 9:45 AM.
+2026-10-17 23:24:45,085 INFO app.tools: tool book_appointment({"slot_id": "1@2026-10-19T09:45:00-04:00", "service": "physical"}) -> {"ok": true, "booked": {"appointment_id": 6, "when": "Monday, October 19 at 9:45 AM", "provider": "Dr. Sarah Chen", "service": "Annual physical"}}
+2026-10-17 23:25:00,470 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:25:04,942 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:25:05,544 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:25:10,286 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.00s ->first_audio=0.81s
+2026-10-17 23:25:11,024 INFO app.tools: tool end_call({"reason": "Caller confirmed appointment and ended the conversation."}) -> {"ok": true, "note": "Call will end after your goodbye."}
+2026-10-17 23:25:15,925 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:25:25,797 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:25:25,810 INFO app.call_lifecycle: call CAsim-new_patient-1792293778 finished: outcome=booked turns=18
+2026-10-17 23:25:26,323 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:25:31,324 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:25:31,738 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:25:42,617 INFO app.realtime_agent: latency call=CAsim-human-1792293917 speech_stopped->response.created=0.00s ->first_audio=0.95s
+2026-10-17 23:25:43,932 INFO app.tools: tool transfer_to_human({"reason": "Caller disputes a $200 lab fee on their bill and is upset; needs billing/front-desk staff to review and assist."}) -> {"ok": true, "note": "Transferring after your next sentence."}
+2026-10-17 23:25:52,333 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:26:01,254 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:26:01,263 INFO app.call_lifecycle: call CAsim-human-1792293917 finished: outcome=transferred turns=4
+patients already present; providers synced
+
+=== new_patient ===
+  agent : Thank you for calling Northside Family Clinic. I'm the virtual assistant. How can I help today?
+  caller: Hi, this is Kevin Brown. I'm a new patient and I'd like to schedule an annual physical on a weekday morning in the next two weeks ¡ª my DOB is March 3, 1979 and I'm calling from this number.
+  agent : Let me check your details and look for some morning physical openings. Um, it looks like you may already have a record, so I'll quickly verify you before I search for times. Thanks. Now I'll look for long morning physical appointments in that window. I found some morning options with Dr. Sarah Chen. You can choose Monday, October 19th at 9, 9:45, or 10:30. Which time would you like?
+  caller: I'll take the 9:00 AM appointment on Monday the 19th, please.
+  agent : Got it. I'll book that time for you now. That time was just taken, so I'll check for the next closest morning options. That 9 a.m. spot was just taken. I can offer Monday, October 19th at 9:45, 10:15, or 10:45 with Dr. Sarah Chen. Which one would you like?
+  caller: I'll take the 9:45 AM appointment on Monday the 19th, please.
+  agent : Okay, I'll secure that time for you and then confirm the details. You're booked for Monday, October 19th at 9:45 a.m. with Dr. Sarah Chen for your annual physical. If you need to change anything later, just call.
+  caller: Great, thanks. See you then.
+  agent : Goodbye, for now, I'll close the call. See you then. Have a good night.
+
+=== human ===
+  agent : Thank you for calling the clinic. I'm the virtual assistant. How can I help you today?
+  caller: There's a $200 lab fee on my bill I never agreed to ¡ª that's wrong. Transfer me to a real person right now.
+  agent : Let me check on transferring you to someone who can help right away. I'm transferring you now to a staff member who can review the billing issue with you. Please hold.
+
+[
+ {
+  "scenario": "new_patient",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "verify_patient",
+   "find_available_slots",
+   "book_appointment"
+  ],
+  "gaps": [
+   5.05,
+   1.44,
+   2.66,
+   1.44
+  ]
+ },
+ {
+  "scenario": "human",
+  "outcome": "transferred",
+  "tools": [
+   "transfer_to_human"
+  ],
+  "gaps": [
+   1.78
+  ]
+ }
+]

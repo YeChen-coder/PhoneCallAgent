@@ -1,0 +1,94 @@
+[
+ {
+  "scenario": "reschedule",
+  "outcome": "rescheduled",
+  "tools": [
+   "verify_patient",
+   "list_my_appointments",
+   "find_available_slots",
+   "reschedule_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   1.66,
+   1.61,
+   1.19,
+   1.39,
+   3.22,
+   1.22,
+   1.25,
+   2.16
+  ]
+ },
+ {
+  "scenario": "new_patient_patel",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   3.75,
+   1.42,
+   1.98,
+   5.59,
+   1.45,
+   2.23
+  ]
+ },
+ {
+  "scenario": "zh_shen",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   1.34,
+   3.09,
+   1.39,
+   1.33,
+   2.05
+  ]
+ },
+ {
+  "scenario": "mixed_reschedule",
+  "outcome": "message_taken",
+  "tools": [
+   "verify_patient",
+   "verify_patient",
+   "transfer_to_human",
+   "take_message",
+   "end_call"
+  ],
+  "gaps": [
+   2.31,
+   10.17,
+   1.48,
+   1.25,
+   1.38,
+   2.3,
+   1.34
+  ]
+ },
+ {
+  "scenario": "cantonese",
+  "outcome": null,
+  "tools": [],
+  "gaps": [
+   1.33,
+   1.67,
+   1.19,
+   1.61,
+   1.38,
+   1.36,
+   1.23,
+   2.03
+  ]
+ }
+]

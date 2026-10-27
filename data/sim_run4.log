@@ -1,0 +1,115 @@
+2026-10-18 00:02:50,368 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:02:58,848 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:02:59,488 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:03:14,966 INFO app.realtime_agent: latency call=CAsim-faq_refill-1792296161 speech_stopped->response.created=0.02s ->first_audio=2.17s
+2026-10-18 00:03:27,402 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:03:31,305 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:03:31,958 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:03:36,838 INFO app.realtime_agent: latency call=CAsim-faq_refill-1792296161 speech_stopped->response.created=0.02s ->first_audio=0.53s
+2026-10-18 00:03:59,690 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:04:04,227 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:04:04,670 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:04:11,397 INFO app.realtime_agent: latency call=CAsim-faq_refill-1792296161 speech_stopped->response.created=0.02s ->first_audio=1.39s
+2026-10-18 00:04:19,454 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:04:21,857 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:04:22,296 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:04:26,875 INFO app.realtime_agent: latency call=CAsim-faq_refill-1792296161 speech_stopped->response.created=0.00s ->first_audio=1.16s
+2026-10-18 00:04:28,170 INFO app.tools: tool take_message({"caller_name": "Dan Miller", "callback_number": "+15559990000", "date_of_birth": "1975-04-12", "category": "refill", "message": "Patient requests a refill of metformin. Please send to Shoppers Drug Mart on King Street.", "urgency": "normal"}) -> {"ok": true, "note": "Message saved. Staff usually call back within one business day."}
+2026-10-18 00:04:40,573 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:04:46,075 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:04:46,505 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:04:50,242 INFO app.tools: tool end_call({"reason": "Caller is finished; closing the call."}) -> {"ok": true, "note": "Call will end after your goodbye."}
+2026-10-18 00:04:50,939 INFO app.realtime_agent: latency call=CAsim-faq_refill-1792296161 speech_stopped->response.created=0.73s ->first_audio=1.30s
+2026-10-18 00:04:53,586 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:05:03,854 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:05:03,870 INFO app.call_lifecycle: call CAsim-faq_refill-1792296161 finished: outcome=message_taken turns=13
+2026-10-18 00:05:13,199 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:05:20,015 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:05:20,554 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:05:35,079 INFO app.realtime_agent: latency call=CAsim-chinese-1792296304 speech_stopped->response.created=0.02s ->first_audio=2.00s
+2026-10-18 00:05:59,853 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:06:06,221 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:06:06,907 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:06:14,533 INFO app.realtime_agent: latency call=CAsim-chinese-1792296304 speech_stopped->response.created=0.02s ->first_audio=0.67s
+2026-10-18 00:06:38,386 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:06:40,477 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:06:40,909 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:06:44,080 INFO app.realtime_agent: latency call=CAsim-chinese-1792296304 speech_stopped->response.created=0.02s ->first_audio=0.47s
+2026-10-18 00:06:47,042 INFO app.tools: tool register_patient({"first_name": "Li", "last_name": "Wang", "date_of_birth": "1992-08-08"}) -> {"ok": true, "patient": "Li Wang"}
+2026-10-18 00:06:47,819 INFO app.tools: tool find_available_slots({"service": "vaccine", "date_from": "2026-10-19", "date_to": "2026-10-25", "part_of_day": "any"}) -> {"ok": true, "slots": [{"slot_id": "2@2026-10-19T09:00:00-04:00", "when": "Monday, October 19 at 9 AM", "date": "2026-10-19 09:00", "provider": "Dr. Michael Patel"}, {"slot_id": "2@2026-10-19T11:15:00-04:00", "when": "Monday, October 19 at 11:15 AM", "date": "2026-10-19 11:15", "provider": "Dr. Mich
+2026-10-18 00:07:05,458 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:07:09,429 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:07:09,834 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:07:15,404 INFO app.notifications: SMS skipped (disabled or no number): Maple Family Clinic: your Vaccination with Dr. Michael Patel is booked for Monday, October 19 at 9 AM.
+2026-10-18 00:07:15,409 INFO app.tools: tool book_appointment({"slot_id": "2@2026-10-19T09:00:00-04:00", "service": "vaccine", "reason": "Vaccination"}) -> {"ok": true, "booked": {"appointment_id": 2, "when": "Monday, October 19 at 9 AM", "date": "2026-10-19 09:00", "provider": "Dr. Michael Patel", "service": "Vaccination"}}
+2026-10-18 00:07:16,045 INFO app.realtime_agent: latency call=CAsim-chinese-1792296304 speech_stopped->response.created=1.24s ->first_audio=1.75s
+2026-10-18 00:07:28,848 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:07:33,842 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:07:34,251 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-18 00:07:37,937 INFO app.tools: tool end_call({"reason": "Caller confirmed no further needs; closing the call."}) -> {"ok": true, "note": "Call will end after your goodbye."}
+2026-10-18 00:07:38,671 INFO app.realtime_agent: latency call=CAsim-chinese-1792296304 speech_stopped->response.created=0.69s ->first_audio=1.30s
+2026-10-18 00:07:44,539 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-18 00:07:54,670 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-18 00:07:54,677 INFO app.call_lifecycle: call CAsim-chinese-1792296304 finished: outcome=booked turns=13
+seeded providers, demo patients and one appointment
+
+=== faq_refill ===
+  agent : Thanks for calling Mabel Family Clinic. I'm the virtual assistant. How can I help you today?
+  caller: Hi, where should I park when I come in? Also, can you send a refill of my metformin to the Shoppers Drug Mart on King Street — Dan Miller; you can leave a message if needed.
+  agent : You can park for free behind the building. The entrance is from Oak Lane. For the refill message, I can take that for staff. First, could you spell your last name for me?
+  caller: M-I-L-L-E-R.
+  agent : One moment while I confirm your details for the message. Thanks. I have the last name as Miller. Please tell me your first name and your date of birth in year, month, day format. Then I'll read the full name and date of birth back to you to confirm before I leave the refill message. After that, I'll confirm the callback number, and you can use the number you're calling from if you like.
+  caller: Dan — 1975-04-12.
+  agent : I have Dan Miller, born 1975-04-12. Is that correct?
+  caller: Yes, that's correct.
+  agent : Okay, let me get that message queued up with the right callback details. Your refill message has been saved. Staff usually call back within one business day. Is there anything else I can help you with today?
+  caller: No, that's all, thanks.
+  agent : Goodbye and take care.
+
+=== chinese ===
+  agent : Thanks for calling Maple Family Clinic. I'm the virtual assistant. How can I help today?
+  caller: 你好，我叫王丽，1992年8月8日出生，第一次来你们诊所。我想预约下周打疫苗，时间都可以。
+  agent : 好的,在注册之前,我需要用您键盘卡上的英文拼写来登记。请问您姓王的英文是怎么拼的,比如WANG,然后也请告诉我名字的英文拼写,接着我会把您的英文全名和出生日期读给您听,请您确认是不是完全一致。
+  caller: 姓拼 W A N G，名拼 L I。
+  agent : 好的,我先为您核对这些信息,然后再帮您看看下周的疫苗时间。请确认一下,您的英文姓名是WANG LI,出生日期是1992-8月8号08号,是否完全一致?请回答是或不是。
+  caller: 是，完全一致。
+  agent : 好的,我来为您注册,然后查一下下周可以接种的时间。 可以的,下周有这些疫苗时间可以选,都是Dr.Michael Patel,周一上午九点,周一上午十一点十五,或者周一下午两点三十,您想要哪一个?
+  caller: 那就周一上午九点吧，谢谢。
+  agent : 以为您约周一,十月十九号上午九点,Dr.Michael Patel的email接种,请带上您的健康卡。还有什么需要帮忙的吗?
+  caller: 好的，谢谢，没别的了。
+  agent : 好的,那我就先挂线了,祝您有个愉快的一天,再见。
+
+[
+ {
+  "scenario": "faq_refill",
+  "outcome": "message_taken",
+  "tools": [
+   "take_message",
+   "end_call"
+  ],
+  "gaps": [
+   2.88,
+   1.23,
+   2.14,
+   1.83,
+   2.03
+  ]
+ },
+ {
+  "scenario": "chinese",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "find_available_slots",
+   "book_appointment",
+   "end_call"
+  ],
+  "gaps": [
+   2.69,
+   1.39,
+   1.19,
+   2.45,
+   2.06
+  ]
+ }
+]

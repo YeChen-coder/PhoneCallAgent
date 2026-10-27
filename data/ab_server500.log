@@ -1,0 +1,72 @@
+2026-10-17 23:23:07,834 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:23:11,508 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:23:12,058 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:23:26,845 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.00s ->first_audio=0.69s
+2026-10-17 23:23:29,040 INFO app.tools: tool register_patient({"first_name": "Kevin", "last_name": "Brown", "date_of_birth": "1979-03-03"}) -> {"ok": false, "error": "A patient with that name and birth date already exists."}
+2026-10-17 23:23:30,892 INFO app.tools: tool verify_patient({"first_name": "Kevin", "last_name": "Brown", "date_of_birth": "1979-03-03"}) -> {"ok": true, "patient": "Kevin Brown"}
+2026-10-17 23:23:33,317 INFO app.tools: tool find_available_slots({"service": "physical", "date_from": "2026-10-19", "date_to": "2026-10-31", "part_of_day": "morning"}) -> {"ok": true, "slots": [{"slot_id": "1@2026-10-19T09:00:00-04:00", "when": "Monday, October 19 at 9 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T09:45:00-04:00", "when": "Monday, October 19 at 9:45 AM", "provider": "Dr. Sarah Chen"}, {"slot_id": "1@2026-10-19T10:30:00-04:00", "when":
+2026-10-17 23:23:57,849 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:24:01,902 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:02,497 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:24:08,863 INFO app.realtime_agent: latency call=CAsim-new_patient-1792293778 speech_stopped->response.created=0.02s ->first_audio=0.81s
+2026-10-17 23:24:09,549 INFO app.notifications: SMS skipped (disabled or no number): Maple Family Clinic: your Annual physical with Dr. Sarah Chen is booked for Monday, October 19 at 9 AM.
+2026-10-17 23:24:09,555 INFO app.tools: tool book_appointment({"slot_id": "1@2026-10-19T09:00:00-04:00", "service": "physical", "reason": "Annual physical"}) -> {"ok": true, "booked": {"appointment_id": 5, "when": "Monday, October 19 at 9 AM", "provider": "Dr. Sarah Chen", "service": "Annual physical"}}
+2026-10-17 23:24:24,015 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:24:26,624 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:41,938 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:41,957 INFO app.call_lifecycle: call CAsim-new_patient-1792293778 finished: outcome=booked turns=9
+2026-10-17 23:24:52,159 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:24:57,994 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:24:58,395 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:25:09,297 INFO app.realtime_agent: latency call=CAsim-human-1792293882 speech_stopped->response.created=0.02s ->first_audio=1.06s
+2026-10-17 23:25:27,502 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:25:35,707 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:25:36,127 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/speech "HTTP/1.1 200 OK"
+2026-10-17 23:25:49,921 INFO app.realtime_agent: latency call=CAsim-human-1792293882 speech_stopped->response.created=0.00s ->first_audio=0.89s
+2026-10-17 23:25:50,873 INFO app.tools: tool transfer_to_human({"reason": "Caller requests to speak with a real billing person about a duplicate charge for visit date 2026-10-03. Caller name provided as Sarah Mitchell. Please assist with billing review and correction."}) -> {"ok": true, "note": "Transferring after your next sentence."}
+2026-10-17 23:25:59,036 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/audio/transcriptions "HTTP/1.1 200 OK"
+2026-10-17 23:26:07,415 INFO httpx2: HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2026-10-17 23:26:07,423 INFO app.call_lifecycle: call CAsim-human-1792293882 finished: outcome=transferred turns=7
+patients already present; providers synced
+
+=== new_patient ===
+  agent : Thank you for calling the clinic. I'm the virtual assistant. How can I help you today?
+  caller: Hi, I'm Kevin Brown ！ I'm a new patient and I'd like to schedule an annual physical. Prefer a weekday morning within the next two weeks; my birthdate is March 3, 1979.
+  agent : Let me check what's available for a new patient physical in that time frame. Let me quickly confirm your identity so I can safely help with scheduling. Thanks for waiting a moment while I look for morning options within the next two weeks. I can offer up to three morning options with Dr. Sarah Chen. There's Monday, October 19th at 9 a.m., Monday, October 19th at 9:45, or Monday, October 19th at 10:30. Which time would you like?
+  caller: 9:00 a.m. on Monday the 19th works ！ please book that.
+  agent : Got it. I'll book that time for you now. You're all set. Your annual physical is booked from Monday, October 19th at 9 a.m. with Dr. Sarah Chen. If you need to change it later, just give us a call. Goodbye.
+
+=== human ===
+  agent : Thank you for calling the clinic. I'm the virtual assistant. How can I help you today?
+  caller: Yes ！ I'm calling about a charge on my bill that's wrong. I was billed twice for the same visit and I need it fixed.
+  agent : I'm sorry about that. I can't fix billing directly here, but I can take a message for the billing team. Please tell me your first and last name, and a brief description, like the date of the visit if you have it, and that you believe you were charged twice. I'll have them review and call you back.
+  caller: No ！ I want to speak to a real billing person right now. My name is Sarah Mitchell, visit date 10/03/2026; I was billed twice ！ please transfer me.
+  agent : Okay, I'll transfer you to a staff member who can help with billing. You are being transferred now. Please stay on the line for the next available staff member.
+
+[
+ {
+  "scenario": "new_patient",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "verify_patient",
+   "find_available_slots",
+   "book_appointment"
+  ],
+  "gaps": [
+   1.39,
+   1.48
+  ]
+ },
+ {
+  "scenario": "human",
+  "outcome": "transferred",
+  "tools": [
+   "transfer_to_human"
+  ],
+  "gaps": [
+   1.77,
+   1.53
+  ]
+ }
+]

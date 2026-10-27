@@ -1,0 +1,28 @@
+[
+ {
+  "scenario": "new_patient",
+  "outcome": "booked",
+  "tools": [
+   "register_patient",
+   "verify_patient",
+   "find_available_slots",
+   "book_appointment"
+  ],
+  "gaps": [
+   5.05,
+   1.44,
+   2.66,
+   1.44
+  ]
+ },
+ {
+  "scenario": "human",
+  "outcome": "transferred",
+  "tools": [
+   "transfer_to_human"
+  ],
+  "gaps": [
+   1.78
+  ]
+ }
+]
