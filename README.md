@@ -1,5 +1,7 @@
 # Clinic Phone Agent — an AI phone receptionist for small clinics (skeleton)
 
+Please kindly note that this is not a real, running project. It is something that I used as preparation before the interview, so its level is far far below from my other projects.
+
 **English** | [中文](README_zh.md)
 
 Answer the call → answer common clinic questions → book / reschedule / cancel appointments → take a message or transfer to a human when it can't handle something → write a post-call summary for the front desk.
